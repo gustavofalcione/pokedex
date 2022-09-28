@@ -1,27 +1,42 @@
-<ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
-  <a
-    class="pokemon"
-    [routerLink]="['details', pokemon.status.id]"
-    *ngIf="pokemon.status"
-  >
-    <section class="pokemon__status">
-      <h2>
-        {{ pokemon.name }}
-      </h2>
+<app-search-box
+  (emmitSearch)="getSearch($event)"
+  *ngIf="!apiError"
+>
+</app-search-box>
 
-      <ul>
-        <li *ngFor="let item of pokemon.status.types">
-          {{ item.type.name }}
-        </li>
-      </ul>
-    </section>
+<section class="list">
+  <ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
+    <a
+      class="pokemon"
+      [routerLink]="['details', pokemon.status.id]"
+      *ngIf="pokemon.status"
+    >
+      <section class="pokemon__status">
+        <h2>
+          {{ pokemon.name }}
+        </h2>
 
-    <section class="pokemon__image">
-      <img
-        [src]="pokemon.status.sprites.other.dream_world.front_default"
-        [alt]="pokemon.name"
-      />
-    </section>
-  </a>
-</ng-template>
+        <ul>
+          <li *ngFor="let item of pokemon.status.types">
+            {{ item.type.name }}
+          </li>
+        </ul>
+      </section>
+
+      <section class="pokemon__image">
+        <img
+          [src]="pokemon.status.sprites.other.dream_world.front_default"
+          [alt]="pokemon.name"
+        />
+      </section>
+    </a>
+  </ng-template>
+</section>
+
+<img
+  src="../../../assets/error.png"
+  alt="Erro ao carregar os dados"
+  width="100%"
+  *ngIf="apiError"
+/>
 
