@@ -3,6 +3,7 @@
 :host {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: rem-calc(20) 0;
 
   .pokemon {
@@ -11,9 +12,11 @@
     width: calc(18.375rem - 2.5rem);
     height: rem-calc(157 - 40);
     background: var(--white);
-    padding: rem-calc(20);
-
     border-radius: rem-calc(10);
+    padding: rem-calc(20);
+    margin-bottom: rem-calc(10);
+    text-decoration: none;
+    color: var(--primary-color);
 
     &__status {
       h2 {
@@ -21,6 +24,7 @@
         font-style: italic;
         font-weight: 800;
         margin-bottom: rem-calc(10);
+        text-transform: capitalize;
       }
 
       ul {
@@ -30,6 +34,7 @@
         li {
           background: var(--grey);
           font-size: rem-calc(10);
+          text-transform: capitalize;
 
           display: flex;
           justify-content: center;
@@ -58,7 +63,7 @@
       background: url('../../../assets/bg/background-list-pokemons.svg') no-repeat;
 
       img {
-        width: rem-calc(80);
+        width: rem-calc(60);
       }
     }
   }
